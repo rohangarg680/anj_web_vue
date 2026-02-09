@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-ink-900 text-white antialiased;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+}
+
+@layer components {
+  .section-spacing {
+    @apply py-16 md:py-24 lg:py-28;
+  }
+
+  .container-grid {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+}
