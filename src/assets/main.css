@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-ink-950 text-white antialiased;
+    background-image:
+      radial-gradient(circle at top, rgba(230, 255, 42, 0.16), transparent 45%),
+      radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.06), transparent 45%),
+      radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.04), transparent 35%);
+    background-repeat: no-repeat;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+}
+
+@layer components {
+  .section-spacing {
+    @apply py-16 md:py-24 lg:py-28;
+  }
+
+  .container-grid {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .glass-panel {
+    @apply rounded-3xl border border-white/10 bg-white/5 shadow-[0_20px_60px_-40px_rgba(0,0,0,0.6)];
+  }
+}
