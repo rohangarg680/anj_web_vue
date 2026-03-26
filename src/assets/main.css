@@ -4,7 +4,17 @@
 
 @layer base {
   body {
-    @apply bg-ink-900 text-white antialiased;
+    @apply bg-[#080511] text-white antialiased;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-serif {
+    font-family: 'Times New Roman', 'Garamond', serif;
+    letter-spacing: 0.02em;
   }
 
   a {
@@ -14,10 +24,69 @@
 
 @layer components {
   .section-spacing {
-    @apply py-16 md:py-24 lg:py-28;
+    @apply py-16 md:py-24;
   }
 
   .container-grid {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
+
+  .invite-cover {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .cover-envelope {
+    backdrop-filter: blur(4px);
+  }
+
+  .wax-seal {
+    @apply relative inline-flex h-32 w-32 items-center justify-center rounded-full border-4 border-red-900/80 text-center font-semibold text-amber-100 shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-105;
+    background: radial-gradient(circle at 30% 25%, #e05050 0%, #8a0f0f 45%, #5f0808 100%);
+  }
+
+  .wax-seal::before {
+    content: '';
+    @apply absolute inset-3 rounded-full border border-amber-100/50;
+  }
+
+  .wax-seal span {
+    @apply relative z-10 px-5 text-2xl italic leading-7;
+    font-family: 'Times New Roman', serif;
+  }
+
+  .royal-card {
+    @apply rounded-3xl border border-amber-200/30 bg-[#120b20]/90 shadow-[0_24px_80px_-28px_rgba(212,175,55,0.6)];
+  }
+
+  .royal-kicker {
+    @apply text-xs font-semibold tracking-[0.3em] text-amber-300/90;
+  }
+
+  .royal-stat {
+    @apply flex flex-col rounded-2xl border border-amber-200/30 bg-[#120b20]/95 px-4 py-5;
+  }
+
+  .royal-stat span {
+    @apply text-3xl font-bold text-amber-300;
+    font-family: 'Times New Roman', serif;
+  }
+
+  .royal-stat small {
+    @apply mt-1 text-xs tracking-[0.2em] text-amber-100/70;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active,
+.rise-enter-active,
+.rise-leave-active {
+  transition: opacity 0.7s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to,
+.rise-enter-from,
+.rise-leave-to {
+  opacity: 0;
 }
