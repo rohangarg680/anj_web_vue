@@ -4,7 +4,9 @@
 
 @layer base {
   body {
-    @apply bg-[#080511] text-white antialiased;
+    @apply antialiased;
+    background: linear-gradient(180deg, #fff8f2 0%, #f6d7d9 100%);
+    color: #2f2a27;
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 
@@ -13,83 +15,127 @@
   h3,
   h4,
   .font-serif {
-    font-family: 'Times New Roman', 'Garamond', serif;
+    font-family: 'Cormorant Garamond', 'Times New Roman', serif;
     letter-spacing: 0.02em;
-  }
-
-  a {
-    @apply text-inherit no-underline;
   }
 }
 
 @layer components {
-  .section-spacing {
-    @apply py-16 md:py-24;
-  }
-
   .container-grid {
     @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
   }
 
-  .invite-cover {
+  .section-spacing {
+    @apply py-10 md:py-16;
+  }
+
+  .site-shell {
+    background:
+      radial-gradient(circle at 20% 20%, rgba(230, 199, 161, 0.35), transparent 35%),
+      radial-gradient(circle at 80% 10%, rgba(207, 222, 211, 0.45), transparent 35%),
+      #fff8f2;
+  }
+
+  .hero-cover {
     background-size: cover;
     background-position: center;
+    animation: slowZoom 15s ease-in-out infinite alternate;
   }
 
-  .cover-envelope {
-    backdrop-filter: blur(4px);
+  .hero-overlay {
+    background: linear-gradient(130deg, rgba(50, 28, 15, 0.62), rgba(112, 68, 39, 0.35));
   }
 
-  .wax-seal {
-    @apply relative inline-flex h-32 w-32 items-center justify-center rounded-full border-4 border-red-900/80 text-center font-semibold text-amber-100 shadow-[0_20px_40px_rgba(0,0,0,0.4)] transition-transform duration-300 hover:scale-105;
-    background: radial-gradient(circle at 30% 25%, #e05050 0%, #8a0f0f 45%, #5f0808 100%);
+  .hero-content {
+    @apply rounded-[2.2rem] border border-white/30 px-8 py-12 text-[#fff8f2] shadow-[0_30px_90px_rgba(0,0,0,0.35)];
+    background: rgba(22, 14, 11, 0.32);
+    backdrop-filter: blur(6px);
   }
 
-  .wax-seal::before {
-    content: '';
-    @apply absolute inset-3 rounded-full border border-amber-100/50;
+  .hero-subtitle {
+    @apply text-sm uppercase tracking-[0.35em] md:text-base;
   }
 
-  .wax-seal span {
-    @apply relative z-10 px-5 text-2xl italic leading-7;
-    font-family: 'Times New Roman', serif;
+  .hero-title {
+    @apply text-6xl md:text-7xl;
   }
 
-
-
-  .photo-panel {
-    @apply relative overflow-hidden rounded-3xl border border-amber-200/40 shadow-[0_20px_50px_rgba(0,0,0,0.45)];
-    min-height: 520px;
+  .hero-title span {
+    color: #e6c7a1;
   }
 
-  .profile-card {
-    @apply rounded-3xl border border-blue-200/60 bg-[#b7d0e7] p-4 md:p-5;
+  .hero-invite {
+    @apply text-lg md:text-2xl;
   }
 
-  .profile-image {
-    @apply h-72 w-full rounded-2xl object-cover;
+  .hero-hashtag {
+    @apply text-lg tracking-[0.2em];
+    color: #f6d7d9;
   }
 
-  .royal-card {
-    @apply rounded-3xl border border-amber-200/30 bg-[#120b20]/90 shadow-[0_24px_80px_-28px_rgba(212,175,55,0.6)];
+  .open-btn {
+    @apply rounded-full px-9 py-3 text-lg font-semibold transition-all duration-300 hover:-translate-y-1;
+    background: linear-gradient(135deg, #e6c7a1, #d9b38c);
+    color: #4a2d1d;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
   }
 
-  .royal-kicker {
-    @apply text-xs font-semibold tracking-[0.3em] text-amber-300/90;
+  .section-kicker {
+    @apply text-xs uppercase tracking-[0.28em] text-[#8d6d55];
   }
 
-  .royal-stat {
-    @apply flex flex-col rounded-2xl border border-amber-200/30 bg-[#120b20]/95 px-4 py-5;
+  .section-title {
+    @apply font-serif text-4xl md:text-5xl;
+    color: #6f4a33;
   }
 
-  .royal-stat span {
-    @apply text-3xl font-bold text-amber-300;
-    font-family: 'Times New Roman', serif;
+  .glass-card {
+    @apply rounded-[2rem] border border-white/60;
+    background: linear-gradient(145deg, rgba(255, 248, 242, 0.88), rgba(246, 215, 217, 0.72));
+    box-shadow: 0 22px 60px rgba(160, 112, 76, 0.18);
   }
 
-  .royal-stat small {
-    @apply mt-1 text-xs tracking-[0.2em] text-amber-100/70;
+  .info-card {
+    @apply rounded-3xl border border-[#e6c7a1]/70 bg-[#fff8f2] p-6 shadow-[0_18px_35px_rgba(160,112,76,0.12)] transition-all duration-300 hover:-translate-y-1;
   }
+
+  .gallery-img {
+    @apply h-64 w-full rounded-3xl border border-white/50 object-cover shadow-[0_18px_35px_rgba(160,112,76,0.16)];
+  }
+
+  .petal-layer {
+    overflow: hidden;
+  }
+
+  .petal {
+    @apply absolute rounded-full;
+    width: 12px;
+    height: 18px;
+    background: linear-gradient(180deg, rgba(246, 215, 217, 0.95), rgba(217, 179, 140, 0.8));
+    filter: blur(0.3px);
+    animation: floatPetal 11s linear infinite;
+  }
+
+  .petal:nth-child(odd) {
+    width: 10px;
+    height: 15px;
+    animation-duration: 9s;
+  }
+
+  .petal:nth-child(1) { left: 5%; animation-delay: 0s; }
+  .petal:nth-child(2) { left: 12%; animation-delay: 1.4s; }
+  .petal:nth-child(3) { left: 19%; animation-delay: 4s; }
+  .petal:nth-child(4) { left: 27%; animation-delay: 2.6s; }
+  .petal:nth-child(5) { left: 36%; animation-delay: 5.2s; }
+  .petal:nth-child(6) { left: 44%; animation-delay: 0.8s; }
+  .petal:nth-child(7) { left: 51%; animation-delay: 3.5s; }
+  .petal:nth-child(8) { left: 59%; animation-delay: 6s; }
+  .petal:nth-child(9) { left: 66%; animation-delay: 2s; }
+  .petal:nth-child(10) { left: 73%; animation-delay: 4.6s; }
+  .petal:nth-child(11) { left: 81%; animation-delay: 1.2s; }
+  .petal:nth-child(12) { left: 87%; animation-delay: 3.9s; }
+  .petal:nth-child(13) { left: 93%; animation-delay: 6.8s; }
+  .petal:nth-child(14) { left: 97%; animation-delay: 5.6s; }
 }
 
 .fade-enter-active,
@@ -104,4 +150,27 @@
 .rise-enter-from,
 .rise-leave-to {
   opacity: 0;
+}
+
+@keyframes floatPetal {
+  0% {
+    transform: translateY(-20px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(105vh) translateX(22px) rotate(300deg);
+    opacity: 0;
+  }
+}
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
 }

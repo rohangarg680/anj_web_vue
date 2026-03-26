@@ -1,98 +1,122 @@
 <template>
-  <div class="relative min-h-screen overflow-hidden bg-[#080511] text-amber-50">
+  <div class="site-shell min-h-screen overflow-x-hidden">
     <transition name="fade">
       <section
         v-if="!isOpened"
-        class="invite-cover relative flex min-h-screen items-center justify-center"
-        :style="coverBackgroundStyle"
+        class="hero-cover relative flex min-h-screen items-center justify-center px-6"
+        :style="heroBackgroundStyle"
       >
-        <div class="absolute inset-0 bg-black/50"></div>
-        <div class="cover-envelope relative z-10 mx-4 flex w-full max-w-4xl flex-col items-center rounded-[3rem] border border-blue-100/50 bg-[#d7e4fb]/85 px-6 py-14 text-center text-[#0c3f85] shadow-2xl md:px-10">
-          <p class="mt-3 font-serif text-5xl md:text-6xl">Rohan & Gunika</p>
-          <p class="mt-4 text-xl tracking-[0.15em] text-[#0c3f85]/80">#RohanWedGunika</p>
+        <div class="hero-overlay absolute inset-0"></div>
+        <div class="petal-layer absolute inset-0" aria-hidden="true">
+          <span v-for="petal in petals" :key="petal" class="petal"></span>
+        </div>
 
-          <button class="wax-seal mt-10" type="button" @click="isOpened = true">
-            <span>Tap to Open</span>
-          </button>
+        <div class="hero-content relative z-10 max-w-3xl text-center">
+          <p class="hero-subtitle">Together With Their Families</p>
+          <h1 class="hero-title mt-4">Rohan <span>&</span> Gunika</h1>
+          <p class="hero-invite mt-4">Invite You To Celebrate Their Wedding</p>
+          <p class="hero-hashtag mt-3">#RohanWedGunika</p>
+          <button type="button" class="open-btn mt-9" @click="isOpened = true">Open Invitation</button>
         </div>
       </section>
     </transition>
 
     <transition name="rise">
-      <div v-if="isOpened" class="relative">
-        <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.2),transparent_60%)]"></div>
-
-        <section class="container-grid relative py-14 md:py-20">
-          <div class="mx-auto grid max-w-5xl gap-8 md:grid-cols-[1.2fr_1fr]">
-            <div class="photo-panel">
+      <main v-if="isOpened" class="pb-20">
+        <section class="container-grid pt-14 md:pt-20">
+          <div class="glass-card grid gap-8 p-6 md:grid-cols-[1.2fr_1fr] md:p-10">
+            <div class="rounded-[2rem] overflow-hidden border border-white/30">
               <img
-                src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?auto=format&fit=crop&w=1100&q=80"
-                alt="Bride and groom"
+                src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=80"
+                alt="Bride and groom at royal fort"
                 class="h-full w-full object-cover"
               />
-              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-7 text-center">
-                <p class="font-serif text-5xl text-white">Rohan & Gunika</p>
-                <p class="mt-2 text-lg tracking-[0.18em] text-amber-100">26 APRIL 2026</p>
-                <p class="mt-2 text-xl text-amber-200">#RohanWedGunika</p>
-              </div>
             </div>
-
-            <div class="royal-card p-8 md:p-10">
-              <p class="royal-kicker">A SPECIAL DAY AWAITS</p>
-              <h2 class="mt-4 font-serif text-4xl text-amber-200">Two Hearts, One Journey</h2>
-              <p class="mt-5 leading-relaxed text-amber-50/85">
-                With the heartfelt blessings of our families, we invite you to join us in celebrating the joyous union.
+            <div class="self-center">
+              <p class="section-kicker">A Special Day Awaits</p>
+              <h2 class="section-title mt-3">Two Hearts, One Journey</h2>
+              <p class="mt-4 text-[#5f4f45]">
+                With the heartfelt blessings of our families, we invite you to celebrate our union in love, laughter, and timeless tradition.
               </p>
-              <div class="mt-6 space-y-2 text-amber-100/85">
-                <p><strong>Venue:</strong> Grand Palace Ballroom, New Delhi</p>
-                <p><strong>Date:</strong> Sunday, 26 April 2026</p>
+              <div class="mt-6 space-y-2 text-[#5f4f45]">
+                <p><strong>Date:</strong> 26 April 2026</p>
                 <p><strong>Time:</strong> 7:30 PM onwards</p>
+                <p><strong>Venue:</strong> The Heritage Fort Palace, Jaipur</p>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="container-grid relative pb-10 md:pb-14">
-          <div class="grid gap-6 md:grid-cols-[1fr_auto_1fr] md:items-center">
-            <article class="profile-card">
-              <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=80" alt="Groom portrait" class="profile-image" />
-              <h3 class="mt-5 text-center font-serif text-3xl text-[#1b3052]">Rohan Garg</h3>
-              <p class="mt-2 text-center text-[#1b3052]/80">S/o Renu & Ramesh Garg</p>
+        <section class="container-grid section-spacing">
+          <h3 class="section-title text-center">Couple Story</h3>
+          <div class="mt-8 grid gap-6 md:grid-cols-2">
+            <article class="info-card">
+              <h4 class="font-serif text-3xl text-[#6f4a33]">Rohan Garg</h4>
+              <p class="mt-2 text-[#5f4f45]">A gentle soul with a joyful heart, grounded in family values and big dreams.</p>
+              <p class="mt-4 text-sm text-[#7a6a5f]">S/o Renu & Ramesh Garg</p>
             </article>
-
-            <div class="text-center text-6xl text-amber-300">&</div>
-
-            <article class="profile-card">
-              <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=700&q=80" alt="Bride portrait" class="profile-image" />
-              <h3 class="mt-5 text-center font-serif text-3xl text-[#1b3052]">Gunika Gupta</h3>
-              <p class="mt-2 text-center text-[#1b3052]/80">D/o Rashmi & Anay Gupta</p>
+            <article class="info-card">
+              <h4 class="font-serif text-3xl text-[#6f4a33]">Gunika Gupta</h4>
+              <p class="mt-2 text-[#5f4f45]">Graceful, compassionate, and radiant — she brings warmth wherever she goes.</p>
+              <p class="mt-4 text-sm text-[#7a6a5f]">D/o Rashmi & Anay Gupta</p>
             </article>
           </div>
         </section>
 
-        <section class="container-grid relative section-spacing">
-          <div class="royal-card grid gap-8 p-8 md:grid-cols-2 md:p-12">
-            <div>
-              <p class="royal-kicker">THE CEREMONY</p>
-              <h3 class="mt-3 font-serif text-3xl text-amber-200 md:text-4xl">Grand Palace Ballroom</h3>
-              <p class="mt-4 leading-relaxed text-amber-50/85">
-                The Imperial Grand Palace,<br />
-                Rajpath Avenue, New Delhi, India.
-              </p>
-              <p class="mt-6 text-amber-100/80">Join us for the varmala, wedding rituals, dinner, and musical celebration.</p>
-            </div>
-            <div class="rounded-3xl border border-amber-200/30 bg-[#140d24] p-6">
-              <p class="royal-kicker">EVENT TIMELINE</p>
-              <ul class="mt-4 space-y-4 text-amber-50/90">
-                <li><strong class="text-amber-300">7:30 PM</strong> - Guest Welcome & Mocktails</li>
-                <li><strong class="text-amber-300">8:15 PM</strong> - Varmala Ceremony</li>
-                <li><strong class="text-amber-300">9:00 PM</strong> - Sacred Wedding Rituals</li>
-                <li><strong class="text-amber-300">10:30 PM</strong> - Royal Dinner & Blessings</li>
-              </ul>
+        <section class="container-grid section-spacing">
+          <h3 class="section-title text-center">Wedding Events</h3>
+          <div class="mt-8 grid gap-5 md:grid-cols-3">
+            <article class="info-card">
+              <p class="text-3xl">💛</p>
+              <h4 class="mt-3 font-serif text-2xl text-[#6f4a33]">Haldi</h4>
+              <p class="mt-1 text-[#5f4f45]">24 April 2026 · 11:00 AM</p>
+            </article>
+            <article class="info-card">
+              <p class="text-3xl">🎶</p>
+              <h4 class="mt-3 font-serif text-2xl text-[#6f4a33]">Sangeet</h4>
+              <p class="mt-1 text-[#5f4f45]">25 April 2026 · 7:00 PM</p>
+            </article>
+            <article class="info-card">
+              <p class="text-3xl">💍</p>
+              <h4 class="mt-3 font-serif text-2xl text-[#6f4a33]">Wedding</h4>
+              <p class="mt-1 text-[#5f4f45]">26 April 2026 · 7:30 PM</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="container-grid section-spacing">
+          <div class="glass-card p-6 md:p-10">
+            <h3 class="section-title text-center">Venue</h3>
+            <p class="mt-3 text-center text-[#5f4f45]">The Heritage Fort Palace, Jaipur, Rajasthan</p>
+            <div class="mt-6 overflow-hidden rounded-3xl border border-[#d9b38c]/60">
+              <iframe
+                title="Venue map"
+                class="h-72 w-full"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps?q=Jaipur%20City%20Palace&output=embed"
+              ></iframe>
             </div>
           </div>
         </section>
-      </div>
+
+        <section class="container-grid section-spacing">
+          <h3 class="section-title text-center">Gallery</h3>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 1" />
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 2" />
+            <img class="gallery-img" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80" alt="Wedding moment 3" />
+          </div>
+        </section>
+
+        <section class="container-grid section-spacing">
+          <div class="glass-card p-8 text-center md:p-12">
+            <h3 class="section-title">RSVP</h3>
+            <p class="mt-3 text-[#5f4f45]">Kindly confirm your presence by 10 April 2026.</p>
+            <p class="mt-2 text-[#6f4a33]">+91 98765 43210 · +91 98765 43211</p>
+          </div>
+        </section>
+      </main>
     </transition>
   </div>
 </template>
@@ -101,9 +125,10 @@
 import { computed, ref } from 'vue';
 
 const isOpened = ref(false);
+const petals = Array.from({ length: 14 }, (_, index) => index + 1);
 
-const coverBackgroundStyle = computed(() => ({
+const heroBackgroundStyle = computed(() => ({
   backgroundImage:
-    "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('https://upload.wikimedia.org/wikipedia/commons/c/cb/Maharaja_Hari_Singh_Palace%2C_Gulmarg_01.jpg')"
+    "url('https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1800&q=80')"
 }));
 </script>
